@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta name="viewport" content="user-scalable=no,initial-scale=0.5,maximum-scale=1.0" />
+
+  <style>
+    body { margin: 0px; }
+    #tapper { 
+      margin: 0px;
+      width: 300px;
+      height: 1000px;
+      background-color: #f00; 
+    }
+  </style>
+  
+  <script>
+    function hex() {
+      var hexchars = "0123456789abcedf";
+      var hexval = Math.floor(16 * Math.random());
+      return hexchars[hexval];
+    }
+    window.onload = function() {
+      var tapper = document.getElementById("tapper")
+      tapper.ontouchstart = function() {
+        tapper.style.backgroundColor = "#"+hex()+hex()+hex();
+      }
+      setTimeout(function(){
+      	window.scrollTo(0, 1)
+      }, 1);
+    }
+    
+    window.onresize = function(){
+    	var tapper = document.getElementById('tapper');
+    	var landscape = window.innerHeight < window.innerWidth;
+    	tapper.style.width = (landscape ? 400 : 300) + "px";
+    	tapper.style.height = (landscape ? 200 : 300) + "px";
+    }
+  </script>
+</head> 
+<body>
+<div id="tapper"></div>
+</body>
+</html>
